@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Order</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #444;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            resize: vertical;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 12px 24px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #777;
+        }
+
+        .menu a {
+            margin-right: 10px;
+            padding: 10px 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .message {
+            background-color: #555;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 3px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            display: none;
+        }
+
+        .message p {
+            border-bottom: 2px solid #f44336;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="menu">
+    <a href="/">HOME</a>
+</div>
+
+{{ if .ShowMessage }}
+<div class="message" id="messageID">
+    <p>{{ .Message }}</p>
+</div>
+{{ end }}
+
+<div class="container">
+    <h1>Find Order!</h1>
+
+    <form name="findOrder" method="post">
+        <label for="orderID">Order ID</label>
+        <textarea id="orderID" name="orderID" rows="2" placeholder="Enter your ID"></textarea>
+
+        <input type="submit" value="FIND">
+    </form>
+</div>
+
+<script>
+    var messageID = document.getElementById("messageID");
+    messageID.style.display = "block"; // Показываем блок
+
+    setTimeout(function () {
+        messageID.style.display = "none"; // Скрываем блок через 2 секунды
+    }, 2000); // 2 секунды
+</script>
+</body>
+
+</html>
